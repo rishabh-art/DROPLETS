@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DROPLETS - High-Tech Water Saving</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Dark background for high-tech feel */
+            color: #e0e0e0; /* Light text color */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Add smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-background {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%); /* Subtle gradient */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* More Acoustic Waves/Lines (CSS based) */
+        .acoustic-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px; /* Increased height */
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwMCIgaGVpZ2h0PSIxNTAiIHZpZXdCb3g9IjAgMCAxNDAwIDE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDEwMEMxMDAgMzAgMzAwIDMwIDQwMCAxMDBTNjAwIDE3MCA4MDAgMTAwUzExMDAgMzAgMTIwMCAxMDBTMTQwMCAxNzAgMTQwMCAxMDBWMTUwSDBSMTAwIiBmaWxsPSIjMDA4Q0REIi8+Cjwvc3ZnPg==') repeat-x; /* Example SVG wave */
+            background-size: 800px 150px; /* Adjust size */
+            animation: wave-animation 15s linear infinite; /* Slower animation */
+            opacity: 0.2; /* More subtle */
+            z-index: 0; /* Behind content */
+        }
+
+        .acoustic-wave-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px; /* Increased height */
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQwMCIgaGVpZ2h0PSIxNTAiIHZpZXdCb3g9IjAgMCAxNDAwIDE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMud29yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJNMCA1MEMxMDAgMTIwIDMwMCAxMjAgNDAwIDUwUzUwMCAtMjAgODAwIDUwUzExMDAgMTIwIDEyMDAgNTBTMTQwMCAtMjAgMTQwMCA1MFYwSDBWNTAiIGZpbGw9IiMwMDdEQkYiLz4KPC9zdmc+==') repeat-x; /* Different wave style */
+            background-size: 900px 150px; /* Adjust size */
+            animation: wave-animation-reverse 18s linear infinite; /* Different animation speed/direction */
+            opacity: 0.15; /* Even more subtle */
+            z-index: 0; /* Behind content */
+        }
+
+        @keyframes wave-animation {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 800px; } /* Match background-size width */
+        }
+
+        @keyframes wave-animation-reverse {
+            0% { background-position-x: 0; }
+            100% { background-position-x: -900px; } /* Match background-size width, reverse direction */
+        }
+
+        /* Wobbly Fade-in Animation */
+        .fade-in-wobbly {
+            opacity: 0;
+            transform: translateY(20px) rotate(2deg); /* Initial state with slight transform */
+            animation: wobbly-fade-in 1s ease-out forwards; /* Animation duration and easing */
+            /* Delay can be added here or via JS for staggered effects */
+        }
+
+        @keyframes wobbly-fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) rotate(2deg);
+            }
+            60% { /* Slightly overshoot */
+                opacity: 0.7;
+                transform: translateY(-5px) rotate(-1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        .feature-icon {
+            color: #008CDD; /* Accent color for icons */
+        }
+
+        .cta-button {
+            background-color: #008CDD; /* Accent color for button */
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #00bfff; /* Lighter shade on hover */
+        }
+
+        /* Ensure content is above waves */
+        .z-10 {
+            z-index: 10;
+        }
+
+        /* Styling for the form */
+        .contact-form {
+            max-width: 400px; /* Limit form width */
+            margin: 0 auto; /* Center the form */
+            padding: 20px;
+            background-color: #1a1a1a; /* Dark background for form */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add transition for smooth effects */
+        }
+
+        /* Input hover effect */
+        .contact-form input[type="text"]:hover,
+        .contact-form input[type="email"]:hover,
+        .contact-form input[type="tel"]:hover {
+            transform: scale(1.02); /* Slightly increase size on hover */
+        }
+
+        /* Input focus effect */
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form input[type="tel"]:focus {
+            outline: none; /* Remove default outline */
+            border-color: #008CDD; /* Blue border on focus */
+            box-shadow: 0 0 5px rgba(0, 140, 221, 0.5); /* Optional: Add a subtle blue glow */
+        }
+
+
+        .contact-form button[type="submit"] {
+            background-color: #008CDD;
+            color: white;
+            font-weight: bold; /* Use font-weight instead of Tailwind class */
+            padding: 12px 24px; /* Adjust padding for size */
+            border-radius: 9999px; /* Make it circular */
+            border: none; /* Remove default border */
+            cursor: pointer; /* Indicate it's clickable */
+            transition: background-color 0.3s ease, transform 0.2s ease, padding 0.3s ease, font-size 0.3s ease; /* Add transitions for size change */
+            width: auto; /* Allow width to adjust based on content/padding */
+            display: block; /* Make it a block element to center */
+            margin: 20px auto 0; /* Center the button and add top margin */
+            position: relative; /* Needed for absolute positioning of arrow/text */
+            z-index: 1; /* Ensure button is above arrow/text */
+        }
+
+        /* Shining/Glitter effect on hover */
+        @keyframes shining {
+            0% { background-color: #008CDD; }
+            25% { background-color: #00bfff; }
+            50% { background-color: #008CDD; }
+            75% { background-color: #00bfff; }
+            100% { background-color: #008CDD; }
+        }
+
+        .contact-form button[type="submit"]:hover {
+            /* background-color: #00bfff; Lighter shade on hover - replaced by animation */
+            transform: scale(1.05); /* Slightly increase size on hover */
+            animation: shining 1.5s infinite; /* Apply shining animation */
+        }
+
+        /* Class for bigger button */
+        .contact-form button[type="submit"].bigger {
+            padding: 15px 30px; /* Larger padding */
+            font-size: 1.1rem; /* Slightly larger text */
+        }
+
+        /* Keyframes for shaking animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        /* Class for shaking button */
+        .contact-form button[type="submit"].shake {
+            animation: shake 0.5s ease-in-out infinite; /* Apply shaking animation */
+        }
+
+
+        /* Styling for the product image section */
+        #product-image-section {
+            padding: 80px 20px; /* Add padding */
+            background-color: #1a1a1a; /* Slightly different background */
+            text-align: center; /* Center image */
+            overflow: hidden; /* Hide overflow during zoom */
+        }
+
+        #product-image-section img {
+            max-width: 80%; /* Responsive image size */
+            height: auto;
+            border-radius: 8px; /* Rounded corners for the image */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transform: scale(1); /* Initial scale */
+            transition: transform 0.8s ease-in-out; /* Smooth transition for zoom */
+        }
+
+        #product-image-section img.zoomed {
+            transform: scale(1.2); /* Zoomed scale */
+        }
+
+        /* Custom Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's on top */
+            visibility: hidden; /* Initially hidden */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a; /* Dark background */
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%; /* Responsive width */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-50px); /* Start slightly above center */
+            transition: transform 0.3s ease;
+        }
+
+         .modal-overlay.visible .modal-content {
+             transform: translateY(0); /* Slide into place */
+         }
+
+
+        .modal-message {
+            font-size: 1.2rem;
+            color: #ff6b6b; /* Light red text */
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            background-color: #ff4d4d; /* Red button */
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background-color: #ff3333; /* Darker red on hover */
+        }
+
+        /* Styling for the Audio Wave Canvas */
+        #audio-wave-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Between background waves and content */
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero-background relative h-screen flex items-center justify-center text-center p-6">
+        <div class="acoustic-wave"></div> <div class="acoustic-wave-top"></div>
+        <canvas id="audio-wave-canvas"></canvas> <div class="z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 rounded-lg fade-in-wobbly">
+                DROPLETS: Save Water with Sound
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 rounded-lg fade-in-wobbly" style="animation-delay: 0.3s;">
+                Predicting water usage based on acoustics for a smarter, more sustainable home.
+            </p>
+            <a href="#features" class="cta-button text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out fade-in-wobbly" style="animation-delay: 0.6s;">
+                Discover How It Works
+            </a>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-6 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 rounded-lg animate-on-scroll">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg feature-item animate-on-scroll">
+                    <div class="text-4xl mb-4 feature-icon">
+                        💧
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Acoustic Prediction</h3>
+                    <p class="text-gray-400 rounded-lg">
+                        Utilizes advanced acoustic sensors to analyze water flow patterns.
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg feature-item animate-on-scroll">
+                    <div class="text-4xl mb-4 feature-icon">
+                         📊
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Real-time Monitoring</h3>
+                    <p class="text-gray-400 rounded-lg">
+                        Get instant insights into your water consumption via a mobile app.
+                    </p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg shadow-lg feature-item animate-on-scroll">
+                    <div class="text-4xl mb-4 feature-icon">
+                         💡
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Smart Alerts</h3>
+                    <p class="text-gray-400 rounded-lg">
+                        Receive notifications for unusual usage or potential leaks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product-image-section">
+        <img src="https://placehold.co/600x400/1a1a1a/008CDD?text=DROPLETS+Device" alt="DROPLETS Device Image">
+    </section>
+
+    <section id="how-it-works" class="py-20 px-6 bg-black">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 rounded-lg animate-on-scroll">How It Works</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+                <div class="mb-10 md:mb-0 how-it-works-item animate-on-scroll">
+                    <div class="text-6xl mb-4 text-gray-600">1️⃣</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Listen</h3>
+                    <p class="text-gray-400 max-w-sm mx-auto rounded-lg">
+                        DROPLETS sensors attach to your pipes and listen to the unique sounds of water flow.
+                    </p>
+                </div>
+                <div class="mb-10 md:mb-0 how-it-works-item animate-on-scroll">
+                    <div class="text-6xl mb-4 text-gray-600">2️⃣</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Analyze</h3>
+                    <p class="text-gray-400 max-w-sm mx-auto rounded-lg">
+                        Our AI analyzes the acoustic data to predict water volume and identify patterns.
+                    </p>
+                </div>
+                <div class="how-it-works-item animate-on-scroll">
+                    <div class="text-6xl mb-4 text-gray-600">3️⃣</div>
+                    <h3 class="text-2xl font-semibold text-white mb-4 rounded-lg">Inform</h3>
+                    <p class="text-gray-400 max-w-sm mx-auto rounded-lg">
+                        View insights and receive alerts through the intuitive DROPLETS mobile app.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 bg-gray-900 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-8 rounded-lg animate-on-scroll">Ready to Save Water?</h2>
+            <p class="text-xl text-gray-300 mb-10 rounded-lg animate-on-scroll">
+                Join the future of smart water management with DROPLETS.
+            </p>
+            <button id="get-started-button" class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out animate-on-scroll">
+                Get Started Today
+            </button>
+
+            <div id="contact-form" class="contact-form hidden animate-on-scroll" style="animation-delay: 0.3s;">
+                <h3 class="text-2xl font-semibold text-white mb-6 text-center">Tell Us About Yourself</h3>
+                <form id="details-form" novalidate>
+                    <div class="mb-4">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="mb-6">
+                        <label for="phone">Phone</label>
+                         <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="submit-container relative mx-auto">
+                         <button type="submit" id="submit-button">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 DROPLETS. All rights reserved.</p>
+    </footer>
+
+    <div id="validation-modal" class="modal-overlay">
+        <div class="modal-content">
+            <p id="modal-message" class="modal-message">Error Message Here</p>
+            <button id="modal-okay-button" class="modal-button">Okay</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for scroll-triggered animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add the animation class when the element is in view
+                        entry.target.classList.add('fade-in-wobbly');
+                        // Stop observing once the animation is triggered
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Select elements to animate
+            document.querySelectorAll('h1, h2, p').forEach(el => {
+                 if (!el.closest('footer')) {
+                    el.classList.add('animate-on-scroll');
+                }
+            });
+
+            document.querySelectorAll('.feature-item, .how-it-works-item').forEach(el => {
+                 el.classList.add('animate-on-scroll');
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            const heroCta = document.querySelector('.hero-background .cta-button');
+            if (heroCta) {
+                 heroCta.classList.add('animate-on-scroll');
+                 observer.observe(heroCta);
+            }
+
+            // Product Image Zoom Animation
+            const productImage = document.querySelector('#product-image-section img');
+            const featuresSection = document.getElementById('features');
+            const howItWorksSection = document.getElementById('how-it-works');
+
+            if (productImage && featuresSection && howItWorksSection) {
+                window.addEventListener('scroll', () => {
+                    const featuresBottom = featuresSection.getBoundingClientRect().bottom;
+                    const howItWorksTop = howItWorksSection.getBoundingClientRect().top;
+                    const imageHeight = productImage.offsetHeight;
+                    const viewportHeight = window.innerHeight;
+
+                    // Determine the scroll range for zooming
+                    // Zoom in when the bottom of Features is out of view (above the viewport)
+                    // Zoom out when the top of How It Works is in view (below or at the top of the viewport)
+                    const zoomInStart = featuresBottom;
+                    const zoomOutStart = howItWorksTop - viewportHeight * 0.5; // Start zooming out when How It Works is halfway up the viewport
+
+                    if (featuresBottom < 0 && howItWorksTop > 0) {
+                         // User is scrolling between Features and How It Works
+                         // Calculate scroll progress within this section
+                         const scrollPosition = window.scrollY;
+                         const sectionTop = featuresSection.offsetTop + featuresSection.offsetHeight;
+                         const sectionHeight = howItWorksSection.offsetTop - sectionTop;
+
+                         // Simple zoom in when past features, zoom out when approaching how it works
+                         if (featuresBottom < 0 && howItWorksTop > viewportHeight * 0.3) { // Zoomed in when past features and How It Works is still mostly off-screen
+                             productImage.classList.add('zoomed');
+                         } else {
+                             productImage.classList.remove('zoomed');
+                         }
+
+                    } else {
+                        // Not in the zoom range, ensure it's not zoomed
+                        productImage.classList.remove('zoomed');
+                    }
+                });
+            }
+        });
+
+        // JavaScript for the Get Started button and form
+        document.getElementById('get-started-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const button = document.getElementById('get-started-button');
+            const formDiv = document.getElementById('contact-form');
+
+            // Hide the button
+            button.classList.add('hidden');
+            button.classList.remove('animate-on-scroll'); // Remove animation class
+
+            // Show the form with animation
+            formDiv.classList.remove('hidden');
+            formDiv.classList.add('fade-in-wobbly'); // Apply the wobbly fade-in animation
+        });
+
+        // JavaScript for Custom Validation Modal and Post-Validation Effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('details-form');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const modalOverlay = document.getElementById('validation-modal');
+            const modalMessage = document.getElementById('modal-message');
+            const modalOkayButton = document.getElementById('modal-okay-button');
+            const submitButton = document.getElementById('submit-button');
+
+            // Function to show the modal
+            function showModal(message) {
+                modalMessage.textContent = message;
+                modalOverlay.classList.add('visible');
+            }
+
+            // Function to hide the modal
+            function hideModal() {
+                modalOverlay.classList.remove('visible');
+            }
+
+            // Function to check if all fields are valid
+            function areAllFieldsValid() {
+                const nameValue = nameInput.value.trim();
+                const emailValue = emailInput.value.trim();
+                const phoneValue = phoneInput.value.trim();
+
+                // Validate Name
+                if (nameValue === '') {
+                    return false;
+                }
+
+                // Validate Email
+                const emailPattern = /\S+@\S+\.\S+/;
+                if (emailValue === '' || !emailPattern.test(emailValue)) {
+                    return false;
+                }
+
+                // Validate Phone
+                const phonePattern = /^[0-9\s\-\+\(\)]+$/;
+                if (phoneValue === '' || !phonePattern.test(phoneValue)) {
+                    return false;
+                }
+
+                return true; // All fields are valid
+            }
+
+            // Function to update button state based on validation
+            function updateButtonState() {
+                if (areAllFieldsValid()) {
+                    submitButton.classList.add('bigger');
+                    submitButton.classList.add('shake');
+                } else {
+                    submitButton.classList.remove('bigger');
+                    submitButton.classList.remove('shake');
+                }
+            }
+
+            // Add blur event listeners to the form fields to check validation when focus is lost
+            nameInput.addEventListener('blur', updateButtonState);
+            emailInput.addEventListener('blur', updateButtonState);
+            phoneInput.addEventListener('blur', updateButtonState);
+
+
+            // Add submit event listener to the form (for actual submission after validation)
+            form.addEventListener('submit', function(event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Re-validate on submit to be sure (though updateButtonState handles most cases)
+                if (areAllFieldsValid()) {
+                    console.log("Form submitted successfully (validation passed)");
+                    // In a real application, you would submit the form data here,
+                    // e.g., using fetch() or XMLHttpRequest.
+                    // form.submit(); // Uncomment this line to actually submit the form
+                } else {
+                     // This else block should ideally not be reached if updateButtonState is working correctly,
+                     // but it's a fallback to show modal on submit if validation somehow fails.
+                     const nameValue = nameInput.value.trim();
+                     const emailValue = emailInput.value.trim();
+                     const phoneValue = phoneInput.value.trim();
+
+                     if (nameValue === '') {
+                         showModal("Please enter your name.");
+                     } else if (emailValue === '' || !/\S+@\S+\.\S+/.test(emailValue)) {
+                         showModal("Your e-mail address is invalid");
+                     } else if (phoneValue === '' || !/^[0-9\s\-\+\(\)]+$/.test(phoneValue)) {
+                         showModal("Your phone number is invalid");
+                     }
+                }
+            });
+
+            // Add click event listener to the modal's Okay button
+            modalOkayButton.addEventListener('click', hideModal);
+
+            // Optional: Hide modal if clicking outside the modal content
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+
+             // Initial check on page load in case fields are pre-filled
+             updateButtonState();
+        });
+
+        // JavaScript for the Audio Wave Canvas Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('audio-wave-canvas');
+            const ctx = canvas.getContext('2d');
+            let animationFrameId;
+
+            // Function to resize canvas
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+
+            // Resize on load and resize event
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Animation variables
+            let time = 0;
+            const amplitude = 30; // Height of the wave peaks
+            const frequency = 0.02; // How spread out the wave is
+            const speed = 0.05; // How fast the wave moves
+            const waveCount = 3; // Number of overlapping waves
+            const waveColors = ['#008CDD', '#00bfff', '#007DBF']; // Shades of blue
+
+            // Function to draw the wave
+            function drawWave() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+
+                for (let i = 0; i < waveCount; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, centerY);
+
+                    // Calculate offset for overlapping waves
+                    const offset = i * (Math.PI / waveCount);
+
+                    for (let x = 0; x < canvas.width; x++) {
+                        // Sine wave calculation with time and offset
+                        const y = centerY + Math.sin(x * frequency + time + offset) * amplitude * Math.sin(time * 0.1 + offset);
+                        ctx.lineTo(x, y);
+                    }
+
+                    ctx.strokeStyle = waveColors[i % waveColors.length]; // Cycle through colors
+                    ctx.lineWidth = 2; // Wave line thickness
+                    ctx.stroke();
+                }
+
+                time += speed; // Increment time for animation
+                animationFrameId = requestAnimationFrame(drawWave); // Loop the animation
+            }
+
+            // Start the animation
+            drawWave();
+
+             // Clean up animation frame on page unload (optional but good practice)
+            window.addEventListener('unload', () => {
+                cancelAnimationFrame(animationFrameId);
+            });
+        });
+    </script>
+
+</body>
+</html>
